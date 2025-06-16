@@ -10,4 +10,4 @@ class Pizza(db.Model):
     restaurant_pizzas = db.relationship('RestaurantPizza', backref='pizza')
 
     def __repr__(self):
-        return f'<Pizza {self.name}>'
+        return f'<Pizza {self.id}: {self.name}, Ingredients: {self.ingredients}>'
