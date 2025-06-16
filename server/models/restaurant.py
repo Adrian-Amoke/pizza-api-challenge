@@ -1,6 +1,7 @@
 from server.app import db
+from sqlalchemy_serializer import SerializerMixin
 
-class Restaurant(db.Model):
+class Restaurant(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(200), nullable=False)

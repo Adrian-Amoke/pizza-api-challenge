@@ -1,6 +1,8 @@
 from server.app import db
+from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 
-class RestaurantPizza(db.Model):
+class RestaurantPizza(db.Model, SerializerMixin):
     __tablename__ = 'restaurant_pizzas'
 
     id = db.Column(db.Integer, primary_key=True)
