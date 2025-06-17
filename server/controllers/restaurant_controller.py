@@ -29,5 +29,13 @@ def get_restaurant_by_id(id):
 def delete_restaurant(id):
     restaurant = Restaurant.query.filter_by(id=id).first()
     if restaurant:
+        # Delete related restaurant_pizzas first to avoid foreign key constraint error
+        from ..models.restaurant_pizza import RestaurantPizza
+        related_rp = RestaurantPizza.query.filter_by(restaurant_id=id).all()
+        for rp in related_rp:
+            db.session.delete(rp)
         db.session.delete(restaurant)
         db.session.commit()
+        return {"Message": "Restaurant deleted successfully"}, 200
+    else:
+        return {"error": "Restaurant not found"}, 404
