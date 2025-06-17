@@ -1,9 +1,7 @@
-from dotenv import load_dotenv
-import os
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import MetaData
 
-load_dotenv()
+metaData=MetaData()
+db=SQLAlchemy(metadata=metaData)
 
-class Config():
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
     
