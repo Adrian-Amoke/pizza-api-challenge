@@ -6,6 +6,9 @@ restaurantpizza_bp = Blueprint('restaurant_pizzas', __name__)
 
 @restaurantpizza_bp.route('/restaurant_pizzas', methods=['POST'])
 def create_restaurant_pizza():
+    if not request.is_json:
+        return make_response({"errors": ["Content-Type must be application/json"]}, 415)
+
     data = request.get_json()
 
     price = data.get('price')

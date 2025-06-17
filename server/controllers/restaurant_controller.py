@@ -1,4 +1,4 @@
-from flask import make_response, Blueprint
+from flask import make_response, Blueprint, jsonify
 from ..models.restaurant import Restaurant
 from server.config import db
 
@@ -9,7 +9,7 @@ def get_all_restaurants():
     restaurants = Restaurant.query.all()
 
     if restaurants:
-        response = make_response(restaurant.to_dict() for restaurant in restaurants)
+        response = jsonify([restaurant.to_dict() for restaurant in restaurants])
         return response
     else:
         response = make_response({"Message": "No restaurants found"}, 404)
