@@ -1,4 +1,4 @@
-from server.app import db
+from server.config import db
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 
@@ -7,7 +7,7 @@ class RestaurantPizza(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Float, nullable=False)
-    pizza_id = db.Column(db.Integer, db.ForeignKey('pizza.id'), nullable=False)
+    pizza_id = db.Column(db.Integer, db.ForeignKey('pizzas.id'), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurant.id'), nullable=False)
 
     def __repr__(self):

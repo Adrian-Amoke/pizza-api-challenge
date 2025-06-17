@@ -1,4 +1,4 @@
-from server.app import db
+from server.config import db
 from sqlalchemy_serializer import SerializerMixin
 
 class Pizza(db.Model, SerializerMixin):

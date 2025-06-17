@@ -1,5 +1,5 @@
 from flask import make_response, Blueprint
-from server.models import Restaurant
+from ..models.restaurant import Restaurant
 from server.config import db
 
 restaurant_bp = Blueprint('restaurants', __name__)
